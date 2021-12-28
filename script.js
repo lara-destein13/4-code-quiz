@@ -1,3 +1,5 @@
+var submitButtonEl = document.querySelector("#start-quiz");
+
 var question1 = {
     question: 'The condition in an if/else statement is enclosed with ______.',
     answer0: '1. quotes',
@@ -58,18 +60,8 @@ var maxTime = 60;
 var score;
 var initials = '';
 
-function setDisplay(id, value) {
-    var element = document.getElementById(id);
-}
+var submitButtonClicked = function() {
+    alert("foo");
+};
 
-
-
-
-
-
-
-
-//  buttonEl.addEventListener("click", function() {
-//      alert("button clicked");
-//  }
-
+submitButtonEl.addEventListener("click", submitButtonClicked);
