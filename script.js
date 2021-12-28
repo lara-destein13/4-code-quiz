@@ -1,4 +1,4 @@
-var submitButtonEl = document.querySelector("#start-quiz");
+var startButtonEl = document.querySelector("#start-quiz");
 var goBackButtonEl = document.querySelector("#scores-back");
 var clearHighScoreEl = document.querySelector("#scores-clear");
 
@@ -66,7 +66,7 @@ var submitButtonClicked = function() {
     alert("foo");
 };
 
-submitButtonEl.addEventListener("click", submitButtonClicked);
+startButtonEl.addEventListener("click", submitButtonClicked);
 
 
 
