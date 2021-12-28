@@ -67,22 +67,61 @@ function setInnerHTML(id, value) {
     element.innerHTML = value;
 }
 
+function answer0() {
+    alert("0");
+}
+
+function answer1() {
+    alert("1");
+}
+
+function answer2() {
+    alert("2");
+}
+
+function answer3() {
+    alert("3");
+}
+
 function nextQuestion() {
     var question = allQuestions[questionNumber];
-    alert(JSON.stringify(question, null, 4));
 
-    setInnerHTML('quiz-question', question.question);
-    setInnerHTML('quiz-answer-0', question.answer0);
-    setInnerHTML('quiz-answer-1', question.answer1);
-    setInnerHTML('quiz-answer-2', question.answer2);
-    setInnerHTML('quiz-answer-3', question.answer3);
-    setInnerHTML('quiz-response', '');
-  }
+    // render the question and possible answers
 
+    var element = document.getElementById("quiz-question");
+    element.innerHTML=question.question;
 
+    var element = document.getElementById("quiz-answer-0");
+    element.innerHTML=question.answer0;
+
+    var element = document.getElementById("quiz-answer-1");
+    element.innerHTML=question.answer1;
+
+    var element = document.getElementById("quiz-answer-2");
+    element.innerHTML=question.answer2;
+
+    var element = document.getElementById("quiz-answer-3");
+    element.innerHTML=question.answer3;
+
+    var element = document.getElementById("quiz-response");
+    element.innerHTML='';
+
+    // attach a click handler for each possible answer
+
+    var element = document.getElementById("quiz-answer-0");
+    element.addEventListener("click", answer0);
+
+    var element = document.getElementById("quiz-answer-1");
+    element.addEventListener("click", answer1);
+
+    var element = document.getElementById("quiz-answer-2");
+    element.addEventListener("click", answer2);
+
+    var element = document.getElementById("quiz-answer-3");
+    element.addEventListener("click", answer3);
+}
 
 var submitButtonClicked = function() {
-    alert("foo");
     var element = document.getElementById('quiz');
     element.style.display = 'block';
     var element = document.getElementById("welcome");
@@ -94,14 +133,11 @@ var submitButtonClicked = function() {
 
 startButtonEl.addEventListener("click", submitButtonClicked);
 
-
-
 var goBackButtonClicked = function() {
     alert("fooo");
 }
 
 goBackButtonEl.addEventListener("click", goBackButtonClicked);
-
 
 var clearHighScoreClicked = function() {
     alert("foooo");
