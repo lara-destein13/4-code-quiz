@@ -64,6 +64,10 @@ var initials = '';
 
 var submitButtonClicked = function() {
     alert("foo");
+    var element = document.getElementById('quiz');
+    element.style.display = 'block';
+    var element = document.getElementById("welcome");
+    element.style.display = 'none';
 };
 
 startButtonEl.addEventListener("click", submitButtonClicked);
