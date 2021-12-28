@@ -62,13 +62,35 @@ var maxTime = 60;
 var score;
 var initials = '';
 
+function setInnerHTML(id, value) {
+    var element = document.getElementById(id);
+    element.innerHTML = value;
+}
+
+function nextQuestion() {
+    var question = allQuestions[questionNumber];
+    alert(JSON.stringify(question, null, 4));
+
+    setInnerHTML('quiz-question', question.question);
+    setInnerHTML('quiz-answer-0', question.answer0);
+    setInnerHTML('quiz-answer-1', question.answer1);
+    setInnerHTML('quiz-answer-2', question.answer2);
+    setInnerHTML('quiz-answer-3', question.answer3);
+    setInnerHTML('quiz-response', '');
+  }
+
+
+
 var submitButtonClicked = function() {
     alert("foo");
     var element = document.getElementById('quiz');
     element.style.display = 'block';
     var element = document.getElementById("welcome");
     element.style.display = 'none';
+    nextQuestion();
 };
+
+
 
 startButtonEl.addEventListener("click", submitButtonClicked);
 
