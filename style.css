@@ -39,4 +39,21 @@ header {
     padding-top: 50px;
 }  
 
+.answer-wrapper {
+    transition-duration: 0.4s;
+    background-color: purple;
+    color: white;
+    padding: 10px 24px;
+    margin: 25px;
+    border-radius: 8px;
+}
+
+.answer-wrapper:hover {
+    background-color: white;
+    color: purple;
+    padding: 10px 24px;
+    margin: 25px;
+    border-radius: 8px;
+}
+
 

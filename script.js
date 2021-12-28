@@ -1,3 +1,4 @@
+
 var startButtonEl = document.querySelector("#start-quiz");
 var goBackButtonEl = document.querySelector("#scores-back");
 var clearHighScoreEl = document.querySelector("#scores-clear");
