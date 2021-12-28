@@ -62,9 +62,9 @@ var maxTime = 60;
 var score;
 var initials = '';
 
-function setInnerHTML(id, value) {
-    var element = document.getElementById(id);
-    element.innerHTML = value;
+function countDown() {
+    time = time - 1;
+    console.log(`time: ${time}`);
 }
 
 function checkAnswer(answer) {
@@ -130,17 +130,18 @@ function nextQuestion() {
     element.addEventListener("click", answer3);
 }
 
-var submitButtonClicked = function() {
+var startButtonClicked = function() {
     var element = document.getElementById('quiz');
     element.style.display = 'block';
     var element = document.getElementById("welcome");
     element.style.display = 'none';
     nextQuestion();
+    interval = window.setInterval(countDown, 1000);
 };
 
 
 
-startButtonEl.addEventListener("click", submitButtonClicked);
+startButtonEl.addEventListener("click", startButtonClicked);
 
 var goBackButtonClicked = function() {
     alert("fooo");
