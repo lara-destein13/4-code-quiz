@@ -1,4 +1,6 @@
 var submitButtonEl = document.querySelector("#start-quiz");
+var goBackButtonEl = document.querySelector("#scores-back");
+var clearHighScoreEl = document.querySelector("#scores-clear");
 
 var question1 = {
     question: 'The condition in an if/else statement is enclosed with ______.',
@@ -65,3 +67,21 @@ var submitButtonClicked = function() {
 };
 
 submitButtonEl.addEventListener("click", submitButtonClicked);
+
+
+
+var goBackButtonClicked = function() {
+    alert("fooo");
+}
+
+goBackButtonEl.addEventListener("click", goBackButtonClicked);
+
+
+var clearHighScoreClicked = function() {
+    alert("foooo");
+}
+
+clearHighScoreEl.addEventListener("click", clearHighScoreClicked);
+
+
+
