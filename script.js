@@ -55,17 +55,24 @@ var allQuestions = [
     question5
 ];
 
-var interval;
+var interval = null;
 var questionNumber = 0;
 var time = 0;
 var maxTime = 60;
 var score;
 var initials = '';
 
+function setTime() {
+    var text = `Time: ${time}`;
+    var element = document.getElementById("head-time");
+    element.innerHTML=text;
+}
+
 function countDown() {
     time = time - 1;
     console.log(`time: ${time}`);
-}
+    setTime();
+}    
 
 function checkAnswer(answer) {
     var question = allQuestions[questionNumber];
@@ -136,10 +143,9 @@ var startButtonClicked = function() {
     var element = document.getElementById("welcome");
     element.style.display = 'none';
     nextQuestion();
+    time = maxTime;
     interval = window.setInterval(countDown, 1000);
 };
-
-
 
 startButtonEl.addEventListener("click", startButtonClicked);
 
