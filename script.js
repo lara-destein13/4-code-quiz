@@ -84,4 +84,16 @@ var clearHighScoreClicked = function() {
 clearHighScoreEl.addEventListener("click", clearHighScoreClicked);
 
 
+var element = document.getElementById("welcome");
+element.style.display = 'block';
+
+var element = document.getElementById("quiz");
+element.style.display = 'none';
+
+var element = document.getElementById("done");
+element.style.display = 'none';
+
+var element = document.getElementById("scores");
+element.style.display = 'none';
+
 
