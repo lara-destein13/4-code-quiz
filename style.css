@@ -32,3 +32,11 @@ header {
     margin: 25px;
     border-radius: 8px;
 }
+
+#quiz {
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 50px;
+}  
+
+
