@@ -81,15 +81,15 @@ function answer0() {
 }
 
 function answer1() {
-    alert("1");
+    checkAnswer(1);
 }
 
 function answer2() {
-    alert("2");
+    checkAnswer(2);
 }
 
 function answer3() {
-    alert("3");
+    checkAnswer(3);
 }
 
 function nextQuestion() {
