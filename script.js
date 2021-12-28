@@ -67,8 +67,17 @@ function setInnerHTML(id, value) {
     element.innerHTML = value;
 }
 
+function checkAnswer(answer) {
+    var question = allQuestions[questionNumber];
+    if (answer === question.correct) {
+      alert("success");
+    } else {
+      alert("fail");
+    }
+}
+
 function answer0() {
-    alert("0");
+    checkAnswer(0);
 }
 
 function answer1() {
