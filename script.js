@@ -233,7 +233,29 @@ function showHighScores() {
     setInnerHTML('scores-0', '&nbsp;');
     setInnerHTML('scores-1', '&nbsp;');
     setInnerHTML('scores-2', '&nbsp;');
+
+    var scores = getAllScores();
+    if (scores.length > 0) {
+      var score0 = scores[0];
+      var text0 = `1. ${score0.initials} - ${score0.score}`;
+      setInnerHTML('scores-0', text0);
+    }
+    if (scores.length > 1) {
+      var score1 = scores[1];
+      var text1 = `2. ${score1.initials} - ${score1.score}`;
+      setInnerHTML('scores-1', text1);
+    }
+    if (scores.length > 2) {
+      var score2 = scores[2];
+      var text2 = `3. ${score2.initials} - ${score2.score}`;
+      setInnerHTML('scores-2', text2);
+    }
 }
+
+function getAllScores() {
+    window.alert("get all scores");
+}
+
 
 function getInitials() {
     var inputDiv = document.getElementById('done-input');
@@ -241,6 +263,14 @@ function getInitials() {
     window.alert(initials);
     initials = initials.toUpperCase();
 }
+
+function updateHighScore() {
+    // Get an array of scores from local storage.
+    scores = getAllScores();
+    window.alert(scores);
+
+}
+
 
 function doneSubmit() {
     getInitials();
