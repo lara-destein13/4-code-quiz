@@ -95,3 +95,37 @@ header {
 #submit-initials {
     display: inline;
 }
+
+#scores {
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 50px;
+}
+
+.score {
+    background-color: lavender;
+    color: black;
+    font-size: 1.5em;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+.scores-button {
+    transition-duration: 0.4s;
+    background-color: indigo;
+    color: white;
+    padding: 10px 24px;
+    margin: 25px;
+    border-radius: 8px;
+    border: none;
+    display: inline-block;
+}
+
+.scores-button:hover {
+    background-color: blueviolet;
+    color: white;
+    padding: 10px 24px;
+    margin: 25px;
+    border-radius: 8px;
+    border: none;
+}
