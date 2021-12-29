@@ -235,8 +235,20 @@ function showHighScores() {
     setInnerHTML('scores-2', '&nbsp;');
 }
 
+function getInitials() {
+    var inputDiv = document.getElementById('done-input');
+    initials = inputDiv.value;
+    window.alert(initials);
+    initials = initials.toUpperCase();
+}
+
 function doneSubmit() {
-    window.alert("hello");
+    getInitials();
+    if (initials.length === 0) {
+      alert('Please enter your initials');
+    } else {
+      updateHighScore();
+    }
 }
 
 
