@@ -224,6 +224,13 @@ element.style.display = 'none';
 var element = document.getElementById("scores");
 element.style.display = 'none';
 
+function showWelcome() {
+    setDisplay('welcome', 'block');
+    setDisplay('quiz', 'none');
+    setDisplay('done', 'none');
+    setDisplay('scores', 'none');
+}
+
 function showHighScores() {
     setDisplay('welcome', 'none');
     setDisplay('quiz', 'none');
@@ -253,9 +260,15 @@ function showHighScores() {
 }
 
 function getAllScores() {
-    window.alert("get all scores");
+    var scores = window.localStorage.getItem('scores');
+    console.log(`xxx scores: ${scores}`);
+    if (scores === null) {
+      scores = [];
+    } else {
+      scores = JSON.parse(scores);
+    }
+    return scores;
 }
-
 
 function getInitials() {
     var inputDiv = document.getElementById('done-input');
@@ -270,7 +283,6 @@ function updateHighScore() {
     window.alert(scores);
 
 }
-
 
 function doneSubmit() {
     getInitials();
