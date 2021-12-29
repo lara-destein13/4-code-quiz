@@ -139,6 +139,7 @@ function checkAnswer(answer) {
 // a function that runs when either the user has answered all the questions successfully 
 // or the user has run out of time. It hides the quiz section and reveals the done section.
 function done() {
+    score = time;
     setDisplay('quiz', 'none');
     setDisplay('done', 'block');
     window.clearInterval(interval);
@@ -219,18 +220,6 @@ function clearHighScore() {
     showHighScores();
 }
 
-var element = document.getElementById("welcome");
-element.style.display = 'block';
-
-var element = document.getElementById("quiz");
-element.style.display = 'none';
-
-var element = document.getElementById("done");
-element.style.display = 'none';
-
-var element = document.getElementById("scores");
-element.style.display = 'none';
-
 // a function that reveals the welcome section and hides all other sections.
 function showWelcome() {
     setDisplay('welcome', 'block');
@@ -294,7 +283,6 @@ function getInitials() {
     initials = inputDiv.value;
     initials = initials.toUpperCase();
 }
-
 
   // Get an array of scores from local storage.  Add a new score to the array of scores.
   // Sort the scores array in decreasing value. Remove low scores until the length of
