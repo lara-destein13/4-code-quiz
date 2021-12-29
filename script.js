@@ -23,11 +23,6 @@ using window.clearInterval.
  
 */
 
-
-// var startButtonEl = document.querySelector("#start-quiz");
-var goBackButtonEl = document.querySelector("#scores-back");
-var clearHighScoreEl = document.querySelector("#scores-clear");
-
 var question0 = {
     question: 'The condition in an if/else statement is enclosed with ______.',
     answer0: '1. quotes',
@@ -197,22 +192,10 @@ var startButtonClicked = function() {
     interval = window.setInterval(countDown, 1000);
 };
 
-
-
-// startButtonEl.addEventListener("click", startButtonClicked);
-
-// var goBackButtonClicked = function() {
-//     alert("fooo");
-// }
-
-// goBackButtonEl.addEventListener("click", goBackButtonClicked);
-
-var clearHighScoreClicked = function() {
-    alert("foooo");
+function clearHighScore() {
+    setAllScores([]);
+    showHighScores();
 }
-
-clearHighScoreEl.addEventListener("click", clearHighScoreClicked);
-
 
 var element = document.getElementById("welcome");
 element.style.display = 'block';
@@ -327,4 +310,4 @@ setDisplay('scores', 'none');
 setOnClick('start-quiz', startButtonClicked);
 setOnClick('head-high-score', showHighScores);
 setOnClick('submit-initials', doneSubmit);
-
+setOnClick('scores-clear', clearHighScore);
