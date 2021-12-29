@@ -235,5 +235,11 @@ function showHighScores() {
     setInnerHTML('scores-2', '&nbsp;');
 }
 
+function doneSubmit() {
+    window.alert("hello");
+}
+
+
 setOnClick('head-high-score', showHighScores);
 
+setOnClick('submit-initials', doneSubmit);
