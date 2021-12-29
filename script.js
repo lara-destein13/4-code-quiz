@@ -225,8 +225,14 @@ var element = document.getElementById("scores");
 element.style.display = 'none';
 
 function showHighScores() {
-    window.alert("show high scores");
-
+    setDisplay('welcome', 'none');
+    setDisplay('quiz', 'none');
+    setDisplay('done', 'none');
+    setDisplay('scores', 'block');
+    setOnClick('scores-back', showWelcome);
+    setInnerHTML('scores-0', '&nbsp;');
+    setInnerHTML('scores-1', '&nbsp;');
+    setInnerHTML('scores-2', '&nbsp;');
 }
 
 setOnClick('head-high-score', showHighScores);
