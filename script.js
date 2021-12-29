@@ -28,7 +28,7 @@ var startButtonEl = document.querySelector("#start-quiz");
 var goBackButtonEl = document.querySelector("#scores-back");
 var clearHighScoreEl = document.querySelector("#scores-clear");
 
-var question1 = {
+var question0 = {
     question: 'The condition in an if/else statement is enclosed with ______.',
     answer0: '1. quotes',
     answer1: '2. curly brackets',
@@ -37,7 +37,7 @@ var question1 = {
     correct: 2,
 };
 
-var question2 = {
+var question1 = {
     question: 'Arrays in JavaScript can be used to store ______.',
     answer0: '1. numbers and strings',
     answer1: '2. other arrays',
@@ -46,7 +46,7 @@ var question2 = {
     correct: 3, 
 };
 
-var question3 = {
+var question2 = {
     question: 'String values must be enclosed within ______ when being assigned to variables.',
     answer0: '1. commas',
     answer1: '2. curly brackets',
@@ -55,7 +55,7 @@ var question3 = {
     correct: 2, 
 };
 
-var question4 = {
+var question3 = {
     question: 'Commonly used data types DO Not include',
     answer0: '1. strings',
     answer1: '2. booleans',
@@ -64,7 +64,7 @@ var question4 = {
     correct: 2,
 };
 
-var question5 = {
+var question4 = {
     question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
     answer0: '1. JavaScript',
     answer1: '2. terminal/bash',
@@ -74,11 +74,11 @@ var question5 = {
 };
 
 var allQuestions = [
+    question0,
     question1,
     question2,
     question3,
-    question4,
-    question5
+    question4
 ];
 
 var interval = null;
@@ -87,6 +87,16 @@ var time = 0;
 var maxTime = 60;
 var score;
 var initials = '';
+
+function setInnerHTML(id, value) {
+    var element = document.getElementById(id);
+    element.innerHTML = value;
+}
+  
+function setOnClick(id, func) {
+    var element = document.getElementById(id);
+    element.onclick = func;
+}
 
 function setTime() {
     var text = `Time: ${time}`;
@@ -104,9 +114,33 @@ function checkAnswer(answer) {
     var question = allQuestions[questionNumber];
     if (answer === question.correct) {
       alert("success");
+      gotItRight();
     } else {
       alert("fail");
+      gotItWrong();
     }
+}
+
+function done() {
+    window.alert("done");
+}
+
+function gotItRight() {
+    setInnerHTML('quiz-response', 'Correct!');
+    questionNumber += 1;
+    if (questionNumber === allQuestions.length) {
+      done();
+    } else {
+      nextQuestion();
+    }
+}
+  
+function gotItWrong() {
+    time = time - 10;
+    if (time < 0) {
+      time = 0;
+    }
+    setInnerHTML('quiz-response', 'Wrong!');
 }
 
 function answer0() {
@@ -130,25 +164,19 @@ function nextQuestion() {
 
     // render the question and possible answers
 
-    var element = document.getElementById("quiz-question");
-    element.innerHTML=question.question;
-
-    var element = document.getElementById("quiz-answer-0");
-    element.innerHTML=question.answer0;
-
-    var element = document.getElementById("quiz-answer-1");
-    element.innerHTML=question.answer1;
-
-    var element = document.getElementById("quiz-answer-2");
-    element.innerHTML=question.answer2;
-
-    var element = document.getElementById("quiz-answer-3");
-    element.innerHTML=question.answer3;
-
-    var element = document.getElementById("quiz-response");
-    element.innerHTML='';
+    setInnerHTML("quiz-question", question.question);
+    setInnerHTML("quiz-answer-0", question.answer0);
+    setInnerHTML("quiz-answer-1", question.answer1);
+    setInnerHTML("quiz-answer-2", question.answer2);
+    setInnerHTML("quiz-answer-3", question.answer3);
+    setInnerHTML("quiz-response", "");
 
     // attach a click handler for each possible answer
+
+    setOnClick("quiz-answer-0", answer0);
+    setOnClick("quiz-answer-1", answer1);
+    setOnClick("quiz-answer-2", answer2);
+    setOnClick("quiz-answer-3", answer3);
 
     var element = document.getElementById("quiz-answer-0");
     element.addEventListener("click", answer0);
