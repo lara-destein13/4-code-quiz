@@ -224,4 +224,10 @@ element.style.display = 'none';
 var element = document.getElementById("scores");
 element.style.display = 'none';
 
+function showHighScores() {
+    window.alert("show high scores");
+
+}
+
+setOnClick('head-high-score', showHighScores);
 
