@@ -23,6 +23,7 @@ using window.clearInterval.
  
 */
 
+// create an object for each question and all possible answers
 var question0 = {
     question: 'The condition in an if/else statement is enclosed with ______.',
     answer0: '1. quotes',
@@ -68,6 +69,8 @@ var question4 = {
     correct: 3,
 };
 
+// Put all of the questions into an array so that we can access them using the questionNumber
+// variable below
 var allQuestions = [
     question0,
     question1,
@@ -83,26 +86,33 @@ var maxTime = 60;
 var score;
 var initials = '';
 
+// a simple utility function that finds an element and sets its display property
 function setDisplay(id, value) {
     var element = document.getElementById(id);
     element.style.display = value;
 }
 
+// a simple utility function that grabs an element by its id and sets it's contents
 function setInnerHTML(id, value) {
     var element = document.getElementById(id);
     element.innerHTML = value;
 }
   
+// a simple utility function that grabs an element by its id and attaches a 
+// click handler function
 function setOnClick(id, func) {
     var element = document.getElementById(id);
     element.onclick = func;
 }
 
+// a function that writes the remaining time into a div
 function setTime() {
     var text = `Time: ${time}`;
     setInnerHTML('head-time', text);
   }
 
+// a function that is called every second. It updates the remaining time and writes the
+// remaining time into the Dom. When the remaining time reaches 0 we clear the interval. 
 function countDown() {
     time = time - 1;
     if (time <= 0) {
@@ -115,6 +125,8 @@ function countDown() {
     }
 }
 
+// a function that checks whether the selected answer is correct by checking the
+// selected answer against the correct answer defined in the object
 function checkAnswer(answer) {
     var question = allQuestions[questionNumber];
     if (answer === question.correct) {
@@ -124,12 +136,16 @@ function checkAnswer(answer) {
     }
 }
 
+// a function that runs when either the user has answered all the questions successfully 
+// or the user has run out of time. It hides the quiz section and reveals the done section.
 function done() {
     setDisplay('quiz', 'none');
     setDisplay('done', 'block');
     window.clearInterval(interval);
 }
 
+// a function that runs when the correct answer is selected. When the correct answer
+// is selected, the player views "Correct!" and the quiz jumps to the next question
 function gotItRight() {
     setInnerHTML('quiz-response', 'Correct!');
     questionNumber += 1;
@@ -139,7 +155,9 @@ function gotItRight() {
       nextQuestion();
     }
 }
-  
+ 
+// a function that runs when the incorrect answer is selected. When the incorrect answer
+// is selected, the player loses 10 seconds from the timer and views "Wrong!" 
 function gotItWrong() {
     time = time - 10;
     if (time < 0) {
@@ -148,6 +166,7 @@ function gotItWrong() {
     setInnerHTML('quiz-response', 'Wrong!');
 }
 
+// Here we are calling the check answer function and passing in the selected answer.
 function answer0() {
     checkAnswer(0);
 }
@@ -164,10 +183,10 @@ function answer3() {
     checkAnswer(3);
 }
 
+ // Renders the question and possible answers. Also attaches a click handler 
+ // for each possible answer.
 function nextQuestion() {
     var question = allQuestions[questionNumber];
-
-    // render the question and possible answers
 
     setInnerHTML("quiz-question", question.question);
     setInnerHTML("quiz-answer-0", question.answer0);
@@ -176,14 +195,15 @@ function nextQuestion() {
     setInnerHTML("quiz-answer-3", question.answer3);
     setInnerHTML("quiz-response", "");
 
-    // attach a click handler for each possible answer
-
     setOnClick("quiz-answer-0", answer0);
     setOnClick("quiz-answer-1", answer1);
     setOnClick("quiz-answer-2", answer2);
     setOnClick("quiz-answer-3", answer3);
 }
 
+// a function that recognizes the start button being clicked. It reveals the quiz section and
+// hides the welcome section. An interval is created that calls our countdown function that runs
+//once every 1000 miliseconds (1 second).
 var startButtonClicked = function() {
     setDisplay('quiz', 'block');
     setDisplay('welcome', 'none');
@@ -192,6 +212,8 @@ var startButtonClicked = function() {
     interval = window.setInterval(countDown, 1000);
 };
 
+// a function that writes an empty array of scores into local storage. It then re renders the
+// high score section.
 function clearHighScore() {
     setAllScores([]);
     showHighScores();
@@ -209,6 +231,7 @@ element.style.display = 'none';
 var element = document.getElementById("scores");
 element.style.display = 'none';
 
+// a function that reveals the welcome section and hides all other sections.
 function showWelcome() {
     setDisplay('welcome', 'block');
     setDisplay('quiz', 'none');
@@ -216,6 +239,8 @@ function showWelcome() {
     setDisplay('scores', 'none');
 }
 
+// a function that both sets the display for the high scores table and renders the view
+// containing both the initials and scores of the top 3 players. 
 function showHighScores() {
     setDisplay('welcome', 'none');
     setDisplay('quiz', 'none');
@@ -244,6 +269,7 @@ function showHighScores() {
     }
 }
 
+// a function that pulls the stored top three high scores in local storage and renders them
 function getAllScores() {
     var scores = window.localStorage.getItem('scores');
     console.log(`xxx scores: ${scores}`);
@@ -255,44 +281,46 @@ function getAllScores() {
     return scores;
 }
 
+// a function that writes the scores to the local storage
 function setAllScores(scores) {
     var scoresString = JSON.stringify(scores);
     window.localStorage.setItem('scores', scoresString);
 }
 
-
+// a function that gets the initials from the text input field and 
+// stores it in our global variable "initials"
 function getInitials() {
     var inputDiv = document.getElementById('done-input');
     initials = inputDiv.value;
-    window.alert(initials);
     initials = initials.toUpperCase();
 }
 
+
+  // Get an array of scores from local storage.  Add a new score to the array of scores.
+  // Sort the scores array in decreasing value. Remove low scores until the length of
+  // the array is three or fewer. Save the scores in localStorage. Show high scores.
 function updateHighScore() {
-    // Get an array of scores from local storage.
-    scores = getAllScores();
+    var scores = getAllScores();
   
-    // Add a now score to the array of scores
-    var newScore = {};
-    newScore.initials = initials;
-    newScore.score = score;
+    var newScore = {
+      initials: initials, 
+      score: score,
+    };
+
     scores.push(newScore);
   
-    // Sort the scores array in decreasing value
     scores.sort((a, b) => (a.score < b.score) ? 1 : -1)
   
-    // Remove low scores until the length of the array is three or fewer.
     while (scores.length > 3) {
       scores.pop();
     }
   
-    // Save the scores in localStorage
     setAllScores(scores);
-  
-    // Show high scores
     showHighScores();
 }
 
+// This function gets the intials from the user input field and calls
+// updateHighScore.
 function doneSubmit() {
     getInitials();
     if (initials.length === 0) {
@@ -302,11 +330,13 @@ function doneSubmit() {
     }
 }
 
+// Hide all sections except for welcome
 setDisplay('welcome', 'block');
 setDisplay('quiz', 'none');
 setDisplay('done', 'none');
 setDisplay('scores', 'none');
 
+// Attach our click handlers
 setOnClick('start-quiz', startButtonClicked);
 setOnClick('head-high-score', showHighScores);
 setOnClick('submit-initials', doneSubmit);
