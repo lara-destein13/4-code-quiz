@@ -41,7 +41,7 @@ header {
 
 .answer-wrapper {
     transition-duration: 0.4s;
-    background-color: purple;
+    background-color: indigo;
     color: white;
     padding: 10px 24px;
     margin: 25px;
@@ -49,8 +49,8 @@ header {
 }
 
 .answer-wrapper:hover {
-    background-color: white;
-    color: purple;
+    background-color: blueviolet;
+    color: white;
     padding: 10px 24px;
     margin: 25px;
     border-radius: 8px;

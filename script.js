@@ -88,6 +88,11 @@ var maxTime = 60;
 var score;
 var initials = '';
 
+function setDisplay(id, value) {
+    var element = document.getElementById(id);
+    element.style.display = value;
+}
+
 function setInnerHTML(id, value) {
     var element = document.getElementById(id);
     element.innerHTML = value;
@@ -100,15 +105,20 @@ function setOnClick(id, func) {
 
 function setTime() {
     var text = `Time: ${time}`;
-    var element = document.getElementById("head-time");
-    element.innerHTML=text;
-}
+    setInnerHTML('head-time', text);
+  }
 
 function countDown() {
     time = time - 1;
-    console.log(`time: ${time}`);
-    setTime();
-}    
+    if (time <= 0) {
+      window.clearInterval(interval);
+      time = 0;
+      setTime();
+      done();
+    } else {
+      setTime();
+    }
+}
 
 function checkAnswer(answer) {
     var question = allQuestions[questionNumber];
@@ -180,10 +190,8 @@ function nextQuestion() {
 }
 
 var startButtonClicked = function() {
-    var element = document.getElementById('quiz');
-    element.style.display = 'block';
-    var element = document.getElementById("welcome");
-    element.style.display = 'none';
+    setDisplay('quiz', 'block');
+    setDisplay('welcome', 'none');
     nextQuestion();
     time = maxTime;
     interval = window.setInterval(countDown, 1000);
