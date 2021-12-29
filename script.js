@@ -24,7 +24,7 @@ using window.clearInterval.
 */
 
 
-var startButtonEl = document.querySelector("#start-quiz");
+// var startButtonEl = document.querySelector("#start-quiz");
 var goBackButtonEl = document.querySelector("#scores-back");
 var clearHighScoreEl = document.querySelector("#scores-clear");
 
@@ -197,13 +197,15 @@ var startButtonClicked = function() {
     interval = window.setInterval(countDown, 1000);
 };
 
-startButtonEl.addEventListener("click", startButtonClicked);
 
-var goBackButtonClicked = function() {
-    alert("fooo");
-}
 
-goBackButtonEl.addEventListener("click", goBackButtonClicked);
+// startButtonEl.addEventListener("click", startButtonClicked);
+
+// var goBackButtonClicked = function() {
+//     alert("fooo");
+// }
+
+// goBackButtonEl.addEventListener("click", goBackButtonClicked);
 
 var clearHighScoreClicked = function() {
     alert("foooo");
@@ -317,7 +319,12 @@ function doneSubmit() {
     }
 }
 
+setDisplay('welcome', 'block');
+setDisplay('quiz', 'none');
+setDisplay('done', 'none');
+setDisplay('scores', 'none');
 
+setOnClick('start-quiz', startButtonClicked);
 setOnClick('head-high-score', showHighScores);
-
 setOnClick('submit-initials', doneSubmit);
+
