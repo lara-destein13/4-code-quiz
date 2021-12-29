@@ -270,6 +270,12 @@ function getAllScores() {
     return scores;
 }
 
+function setAllScores(scores) {
+    var scoresString = JSON.stringify(scores);
+    window.localStorage.setItem('scores', scoresString);
+}
+
+
 function getInitials() {
     var inputDiv = document.getElementById('done-input');
     initials = inputDiv.value;
@@ -280,8 +286,26 @@ function getInitials() {
 function updateHighScore() {
     // Get an array of scores from local storage.
     scores = getAllScores();
-    window.alert(scores);
-
+  
+    // Add a now score to the array of scores
+    var newScore = {};
+    newScore.initials = initials;
+    newScore.score = score;
+    scores.push(newScore);
+  
+    // Sort the scores array in decreasing value
+    scores.sort((a, b) => (a.score < b.score) ? 1 : -1)
+  
+    // Remove low scores until the length of the array is three or fewer.
+    while (scores.length > 3) {
+      scores.pop();
+    }
+  
+    // Save the scores in localStorage
+    setAllScores(scores);
+  
+    // Show high scores
+    showHighScores();
 }
 
 function doneSubmit() {
