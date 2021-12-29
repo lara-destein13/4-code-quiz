@@ -113,16 +113,16 @@ function countDown() {
 function checkAnswer(answer) {
     var question = allQuestions[questionNumber];
     if (answer === question.correct) {
-      alert("success");
       gotItRight();
     } else {
-      alert("fail");
       gotItWrong();
     }
 }
 
 function done() {
-    window.alert("done");
+    setDisplay('quiz', 'none');
+    setDisplay('done', 'block');
+    window.clearInterval(interval);
 }
 
 function gotItRight() {
@@ -177,18 +177,6 @@ function nextQuestion() {
     setOnClick("quiz-answer-1", answer1);
     setOnClick("quiz-answer-2", answer2);
     setOnClick("quiz-answer-3", answer3);
-
-    var element = document.getElementById("quiz-answer-0");
-    element.addEventListener("click", answer0);
-
-    var element = document.getElementById("quiz-answer-1");
-    element.addEventListener("click", answer1);
-
-    var element = document.getElementById("quiz-answer-2");
-    element.addEventListener("click", answer2);
-
-    var element = document.getElementById("quiz-answer-3");
-    element.addEventListener("click", answer3);
 }
 
 var startButtonClicked = function() {
