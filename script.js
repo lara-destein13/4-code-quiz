@@ -1,3 +1,28 @@
+/*
+some notes on how this works
+ 
+(1) Pages. Rather than having multiple html pages we have a single html page with
+multiple sections. We show only one section at a time. We hide the others by setting the
+display property to none.
+ 
+(2) Rendering the question and answer pages. We use a single html section named quiz for
+all of the questions. That section has a <h2>> tag that we use for the question and a link for
+each of the possible answers.
+ 
+As we move from question to question, we set the .innerHtml property on the <h2>
+and <a> to set the text for the question and all the possible answers. And we also
+update the onClick property for each of the <a> tags.
+
+(3) We use an interval to keep track of the 60 second countdown. When the user starts
+the quiz we create the interval using window.setInterval. This causes the function 
+countDown to be called every 1000 milisecond (AKA 1 second). We use the variable time to 
+keep track of the last time. We set time to 60 when we initialize the variable.
+
+When function countDown sees that the variable time has reached 0, we cancel the interval
+using window.clearInterval. 
+ 
+*/
+
 
 var startButtonEl = document.querySelector("#start-quiz");
 var goBackButtonEl = document.querySelector("#scores-back");
