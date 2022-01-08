@@ -30,7 +30,7 @@ THEN I can save my initials and score
 Application runs in the browser and can be accessed at
 https://lara-destein13.github.io/4-code-quiz/
 
-![alt text](.git/4-code-quiz/code-quiz-screenshot.png)
+![code-quiz-screenshot](https://user-images.githubusercontent.com/88476888/148658686-a45acc30-15b4-4d6b-9005-8a5757625b29.png)
 
 ## Contributing
 Made with &hearts; by Lara DeStein
